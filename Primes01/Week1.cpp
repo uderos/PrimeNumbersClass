@@ -27,7 +27,7 @@ std::string Week1::m_display_num_prime_twins(const NumType from_number,
 	const NumType to_number) const
 {
 	PrimeUtils utils;
-	const std::size_t num_twins = utils.FindNumPairs(from_number, to_number);
+	const std::size_t num_twins = utils.FindPrimeTwins(from_number, to_number);
 
 	std::ostringstream oss;
 	oss << '[' << __FUNCTION__ << ']'
@@ -38,6 +38,21 @@ std::string Week1::m_display_num_prime_twins(const NumType from_number,
 	return oss.str();
 }
 
+
+std::string Week1::m_display_goldbach_pairs(const NumType target) const
+{
+	PrimeUtils utils;
+	NumPairList pairs = utils.FindGoldbachPairs(target); 
+
+	std::ostringstream oss;
+	oss << '[' << __FUNCTION__ << ']'
+		<< " Goldback pairs for N=" << target << ": ";
+
+	for (const auto & p : pairs)
+		oss << "(" << p.first << "," << p.second << ") ";
+
+	return oss.str();
+}
 
 
 void Week1::m_homework_1_1_1() const
@@ -76,11 +91,22 @@ void Week1::m_homework_1_2() const
 		<< std::endl;
 }
 
+void Week1::m_homework_1_3() const
+{
+	NumType target = 100;
+
+	std::cout
+		<< '[' << __FUNCTION__ << ']'
+		<< m_display_goldbach_pairs(target)
+		<< std::endl;
+}
+
 void Week1::Run() const
 {
 	m_homework_1_1_1();
 	m_homework_1_1_2();
 	m_homework_1_1_3();
 	m_homework_1_2();
+	m_homework_1_3();
 }
 

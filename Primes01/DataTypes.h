@@ -3,6 +3,8 @@
 
 using NumType = std::uintmax_t;
 using NumList = std::multiset<NumType >;
+using NumPair = std::pair<NumType, NumType>;
+using NumPairList = std::vector<NumPair>;
 
 enum eWeek
 {

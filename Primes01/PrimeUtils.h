@@ -9,8 +9,10 @@ class PrimeUtils
 
 		NumList Factorize(const NumType product) const;
 
-		std::size_t FindNumPairs(const NumType from_number,
-								 const NumType to_number) const;
+		std::size_t FindPrimeTwins(const NumType from_number,
+								   const NumType to_number) const;
+
+		NumPairList FindGoldbachPairs(const NumType target) const;
 
 	private:
 

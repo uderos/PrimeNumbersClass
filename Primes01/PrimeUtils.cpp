@@ -79,8 +79,8 @@ NumType PrimeUtils::m_calc_next_prime(const NumType last_prime) const
 	}
 }
 
-std::size_t PrimeUtils::FindNumPairs(const NumType from_number,
-									 const NumType to_number) const
+std::size_t PrimeUtils::FindPrimeTwins(const NumType from_number,
+									   const NumType to_number) const
 {
 	std::size_t num_pairs = 0;
 
@@ -106,4 +106,29 @@ std::size_t PrimeUtils::FindNumPairs(const NumType from_number,
 	return num_pairs;
 }
 
+NumPairList PrimeUtils::FindGoldbachPairs(const NumType target) const
+{
+	NumPairList pairs;
 
+	for (NumType first = 2; 
+		 first < target; 
+		 first = m_calc_next_prime(first))
+	{
+		for (NumType second = first;
+			first + second <= target;
+			second = m_calc_next_prime(second))
+		{
+			if (first + second == target)
+			{
+				pairs.emplace_back(first, second);
+
+				COUT << "Goldback Pair: target=" << target
+					<< " first=" << first
+					<< " second=" << second
+					<< std::endl;
+			}
+		}
+	}
+
+	return pairs;
+}

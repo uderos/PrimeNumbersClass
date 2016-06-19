@@ -13,8 +13,11 @@ class PrimeUtils
 								   const NumType to_number) const;
 
 		NumPairList FindGoldbachPairs(const NumType target) const;
+		NumPairList FindFermatSquarePairs(const NumType target) const;
 
-	private:
+		bool AreRelativePrimes(const NumType a, const NumType b) const;
+
+private:
 
 		bool m_has_factors(const NumType target, const NumList & factors) const;
 

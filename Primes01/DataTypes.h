@@ -16,5 +16,5 @@ enum eWeek
 	WEEK_ALL = 99
 };
 
-#define COUT std::cout
-//#define COUT if(0)std::cout
+// #define COUT std::cout
+#define COUT if(0)std::cout

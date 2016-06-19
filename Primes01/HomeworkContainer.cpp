@@ -2,11 +2,13 @@
 #include "HomeworkContainer.h"
 
 #include "Week1.h"
+#include "Week2.h"
 
 HomeworkContainer::HomeworkContainer()
 {
 //	m_homeworks.emplace(WEEK_1, std::make_shared<HomeworkSet>(Week1()));
 	m_homeworks.emplace(WEEK_1, new Week1);
+	m_homeworks.emplace(WEEK_2, new Week2);
 }
 
 

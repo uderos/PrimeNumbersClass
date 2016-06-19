@@ -132,3 +132,56 @@ NumPairList PrimeUtils::FindGoldbachPairs(const NumType target) const
 
 	return pairs;
 }
+
+NumPairList PrimeUtils::FindFermatSquarePairs(const NumType target) const
+{
+	NumPairList pairs;
+
+	for (NumType first = 1; first * first < target; ++first)
+	{
+		for (NumType second = first; second * second < target; ++second)
+		{
+			const NumType current = (first * first) + (second * second);
+
+			if (current < target)
+			{
+				;
+			}
+			else 
+			{
+				if (current == target)
+				{
+					pairs.emplace_back(first, second);
+
+					COUT << "Fermat Pair: target=" << target
+						<< " first=" << first
+						<< " second=" << second
+						<< std::endl;
+				}
+
+				break;
+			}
+		}
+	}
+
+	return pairs;
+}
+
+
+bool PrimeUtils::AreRelativePrimes(const NumType a, const NumType b) const
+{
+	const NumType target = std::min(a, b);
+	for (NumType factor = 2;
+		factor < target;
+		factor = m_calc_next_prime(factor))
+	{
+		if ((a % factor == 0) && (b % factor == 0))
+		{
+			COUT << factor << " is a common factor of " 
+				 << a << " and " << b << std::endl;
+			return false;
+		}
+	}
+
+	return true;
+}

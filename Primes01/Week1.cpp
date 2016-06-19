@@ -46,7 +46,7 @@ std::string Week1::m_display_goldbach_pairs(const NumType target) const
 
 	std::ostringstream oss;
 	oss << '[' << __FUNCTION__ << ']'
-		<< " Goldback pairs for N=" << target << ": ";
+		<< " Goldbach pairs for N=" << target << ": ";
 
 	for (const auto & p : pairs)
 		oss << "(" << p.first << "," << p.second << ") ";

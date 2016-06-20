@@ -86,6 +86,8 @@
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Week1.h" />
     <ClInclude Include="Week2.h" />
+    <ClInclude Include="Week3.h" />
+    <ClInclude Include="Week4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HomeworkContainer.cpp" />
@@ -99,6 +101,8 @@
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Week1.cpp" />
     <ClCompile Include="Week2.cpp" />
+    <ClCompile Include="Week3.cpp" />
+    <ClCompile Include="Week4.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

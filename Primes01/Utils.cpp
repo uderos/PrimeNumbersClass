@@ -23,3 +23,10 @@ std::string Utils::to_string(const NumList & nl) const
 
 	return oss.str();
 }
+
+std::string Utils::to_string(const NumTriplet & triplet) const
+{
+	std::ostringstream oss;
+	oss << "(" << triplet.a << "," << triplet.b << "," << triplet.c << ")";
+	return oss.str();
+}

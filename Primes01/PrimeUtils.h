@@ -17,7 +17,11 @@ class PrimeUtils
 
 		bool AreRelativePrimes(const NumType a, const NumType b) const;
 
-private:
+		TripletList FindTriplet(const NumType target, TripletEvaluator evaluator) const;
+
+		NumType CalcConductor(const NumTriplet & triplet) const;
+
+	private:
 
 		bool m_has_factors(const NumType target, const NumList & factors) const;
 

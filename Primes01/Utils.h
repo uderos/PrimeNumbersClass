@@ -9,5 +9,6 @@ class Utils
 		virtual ~Utils();
 
 		std::string to_string(const NumList & nl) const;
+		std::string to_string(const NumTriplet & triplet) const;
 };
 

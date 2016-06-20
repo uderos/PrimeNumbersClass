@@ -45,6 +45,12 @@
     <ClInclude Include="Week2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Week3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Week4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +75,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Week2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Week3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Week4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PrimeUtils.h"
+#include "Utils.h"
 
 
 PrimeUtils::PrimeUtils()
@@ -184,4 +185,75 @@ bool PrimeUtils::AreRelativePrimes(const NumType a, const NumType b) const
 	}
 
 	return true;
+}
+
+TripletList PrimeUtils::FindTriplet(const NumType target, TripletEvaluator evaluator) const
+{
+	Utils utils;
+	TripletList triplet_list;
+
+	NumTriplet triplet; // 0 0 0
+
+	for (triplet.a = 0; triplet.a <= target; ++triplet.a)
+	{
+		triplet.b = triplet.c = NumType(0);
+		if (evaluator(target, triplet) > target)
+			break;
+
+		for (triplet.b = 0; triplet.b <= target; ++triplet.b)
+		{
+			triplet.c = NumType(0);
+			if (evaluator(target, triplet) > target)
+				break;
+
+			for (triplet.c = 0; triplet.c <= target; ++triplet.c)
+			{
+				const NumType current = evaluator(target, triplet);
+
+				COUT << "Triplet check: target=" << target << " current=" << current
+					<< " triplet=" << utils.to_string(triplet) << std::endl;
+
+				if (current == target)
+				{
+					triplet_list.push_back(triplet);
+
+					COUT << "Triplet FOUND: target=" << target 
+						  << " triplet=" << utils.to_string(triplet) << std::endl;
+				}
+				else if (current > target)
+				{
+					break;
+				}
+			}
+		}
+	}
+
+	return triplet_list;
+}
+
+template <typename T>
+NumSet f_merge_num_lists(const T list_of_lists)
+{
+	NumSet result;
+	for (const auto & list : list_of_lists)
+	for (const auto & elem : list)
+		result.insert(elem);
+
+	return result;
+}
+
+NumType PrimeUtils::CalcConductor(const NumTriplet & triplet) const
+{
+	std::vector<NumList> factors_list;
+	factors_list.push_back(Factorize(triplet.a));
+	factors_list.push_back(Factorize(triplet.b));
+	factors_list.push_back(Factorize(triplet.c));
+	NumSet factors = f_merge_num_lists(factors_list);
+
+	NumType conductor = 1;
+	for (const auto & f : factors)
+		conductor *= f;
+
+	return conductor;
+
 }

@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataTypes.h" />
+    <ClInclude Include="Final.h" />
     <ClInclude Include="HomeworkContainer.h" />
     <ClInclude Include="HomeworkSet.h" />
     <ClInclude Include="PrimeUtils.h" />
@@ -90,6 +91,7 @@
     <ClInclude Include="Week4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Final.cpp" />
     <ClCompile Include="HomeworkContainer.cpp" />
     <ClCompile Include="HomeworkSet.cpp" />
     <ClCompile Include="Primes01.cpp" />

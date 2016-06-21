@@ -21,6 +21,8 @@ class PrimeUtils
 
 		NumType CalcConductor(const NumTriplet & triplet) const;
 
+		NumVectorPair SieveOfEratosthenes(const NumType upper_limit) const;
+
 	private:
 
 		bool m_has_factors(const NumType target, const NumList & factors) const;

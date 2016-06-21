@@ -4,8 +4,10 @@
 using NumType = std::uintmax_t;
 using NumList = std::multiset<NumType >;
 using NumSet = std::set<NumType >;
+using NumVector = std::vector<NumType>;
 using NumPair = std::pair<NumType, NumType>;
 using NumPairList = std::vector<NumPair>;
+using NumVectorPair = std::pair<NumVector, NumVector>;
 
 enum eWeek
 {
@@ -13,6 +15,7 @@ enum eWeek
 	WEEK_2,
 	WEEK_3,
 	WEEK_4,
+	WEEK_FINAL,
 
 	WEEK_ALL = 99
 };

@@ -5,6 +5,7 @@
 #include "Week2.h"
 #include "Week3.h"
 #include "Week4.h"
+#include "Final.h"
 
 HomeworkContainer::HomeworkContainer()
 {
@@ -13,7 +14,8 @@ HomeworkContainer::HomeworkContainer()
 	//m_homeworks.emplace(WEEK_1, new Week1);
 	//m_homeworks.emplace(WEEK_2, new Week2);
 	//m_homeworks.emplace(WEEK_3, new Week3);
-	m_homeworks.emplace(WEEK_4, new Week4);
+	//m_homeworks.emplace(WEEK_4, new Week4);
+	m_homeworks.emplace(WEEK_FINAL, new Final);
 }
 
 

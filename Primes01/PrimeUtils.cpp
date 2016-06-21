@@ -257,3 +257,41 @@ NumType PrimeUtils::CalcConductor(const NumTriplet & triplet) const
 	return conductor;
 
 }
+
+NumVectorPair PrimeUtils::SieveOfEratosthenes(const NumType upper_limit) const
+{
+	NumVector removed;
+	std::vector<bool> working_set(static_cast<size_t>(1 + upper_limit));
+
+	for (size_t i = 0; i < working_set.size(); ++i)
+		working_set[i] = (i < 2 ? false : true);
+
+	for (NumType i = 2; i < upper_limit; ++i)
+	{
+		for (NumType j = 2; true; ++j)
+		{
+			const NumType target = i * j;
+			if (target <= upper_limit)
+			{
+				if (working_set[target])
+				{
+					working_set[target] = false;
+					removed.push_back(target);
+					COUT << "Removing " << target << std::endl;
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+
+	NumVector primes;
+	for (size_t i = 0; i < working_set.size(); ++i)
+	if (working_set[i])
+		primes.push_back(i);
+
+	return std::make_pair(primes, removed);
+}
+

@@ -35,5 +35,5 @@ using TripletList = std::vector<NumTriplet>;
 
 using TripletEvaluator = std::function<NumType(const NumType, const NumTriplet &)>;
 
-//#define COUT std::cout
-#define COUT if(0)std::cout
+#define COUT std::cout
+//#define COUT if(0)std::cout

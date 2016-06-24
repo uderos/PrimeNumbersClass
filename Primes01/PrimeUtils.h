@@ -13,6 +13,7 @@ class PrimeUtils
 								   const NumType to_number) const;
 
 		NumPairList FindGoldbachPairs(const NumType target) const;
+		NumPairList FindGoldbachPairsFast(const NumType target) const;
 		NumPairList FindFermatSquarePairs(const NumType target) const;
 
 		bool AreRelativePrimes(const NumType a, const NumType b) const;
@@ -22,6 +23,8 @@ class PrimeUtils
 		NumType CalcConductor(const NumTriplet & triplet) const;
 
 		NumVectorPair SieveOfEratosthenes(const NumType upper_limit) const;
+
+		NumType CalcNextPrime(const NumType last_prime) const;
 
 	private:
 

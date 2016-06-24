@@ -53,6 +53,9 @@ bool PrimeUtils::m_has_factors(const NumType target,
 
 bool PrimeUtils::m_is_prime(const NumType number) const
 {
+	if (number == 1)
+		return true;
+
 	if (number == 2)
 		return true;
 
@@ -67,14 +70,24 @@ bool PrimeUtils::m_is_prime(const NumType number) const
 	return true;
 }
 
+NumType PrimeUtils::CalcNextPrime(const NumType last_prime) const
+{
+	return m_calc_next_prime(last_prime);
+}
 NumType PrimeUtils::m_calc_next_prime(const NumType last_prime) const
 {
-	NumType start = last_prime + (last_prime % 2 == 0 ? 1 : 2);
+	NumType start = 0;
+	if (last_prime <= 1)
+		start = 2;
+	else if (last_prime % 2 == 0)
+		start = last_prime + 1;
+	else start = last_prime + 2;
+
 	for (NumType n = start; true; n += 2)
 	{
 		if (m_is_prime(n))
 		{
-			COUT << "The next prime after " << last_prime << " is " << n << std::endl;
+			// COUT << "The next prime after " << last_prime << " is " << n << std::endl;
 			return n;
 		}
 	}
@@ -111,14 +124,53 @@ NumPairList PrimeUtils::FindGoldbachPairs(const NumType target) const
 {
 	NumPairList pairs;
 
-	for (NumType first = 2; 
-		 first < target; 
+	for (NumType first = 1; 
+		 first <= target; 
 		 first = m_calc_next_prime(first))
 	{
+		COUT << __FUNCTION__ << " first <== " << first << std::endl;
 		for (NumType second = first;
 			first + second <= target;
 			second = m_calc_next_prime(second))
 		{
+			if (first + second == target)
+			{
+				pairs.emplace_back(first, second);
+
+				COUT << "Goldback Pair: target=" << target
+					<< " first=" << first
+					<< " second=" << second
+					<< std::endl;
+			}
+		}
+	}
+
+	return pairs;
+}
+
+NumPairList PrimeUtils::FindGoldbachPairsFast(const NumType target) const
+{
+	COUT << __FUNCTION__ << " Creating list of primes ..." << std::endl;
+	NumVector primes_list;
+	for (NumType p = 1; p <= target; p = m_calc_next_prime(p))
+		primes_list.push_back(p);
+
+	const std::size_t num_primes = primes_list.size();
+	COUT << __FUNCTION__ << " Found " << num_primes << " primes" << std::endl;
+
+	NumPairList pairs;
+
+	for (std::size_t idx1 = 0; idx1 < num_primes; ++idx1)
+	{
+		const NumType first = primes_list[idx1];
+		COUT << __FUNCTION__ << " first <== " << first << std::endl;
+
+		for (std::size_t idx2 = idx1; 
+			(idx2 < num_primes) && (first + primes_list[idx2] <= target);
+			++idx2)
+		{
+			const NumType second = primes_list[idx2];
+
 			if (first + second == target)
 			{
 				pairs.emplace_back(first, second);
